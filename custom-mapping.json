@@ -1,0 +1,55 @@
+{
+    "components": {
+        "Input": {
+            "appearances": {
+                "default": {
+                    "variantGroups": {
+                        "status": {
+                            "basic": {
+                                "state": {
+                                    "focused": {
+                                        "borderColor": "#777"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "Select": {
+            "appearances": {
+                "default": {
+                    "variantGroups": {
+                        "status": {
+                            "basic": {
+                                "state": {
+                                    "active": {
+                                        "borderColor": "#777"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "Datepicker": {
+            "appearances": {
+                "default": {
+                    "variantGroups": {
+                        "status": {
+                            "basic": {
+                                "state": {
+                                    "active": {
+                                        "borderColor": "#777"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
