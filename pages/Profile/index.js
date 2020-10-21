@@ -8,6 +8,7 @@ import SettingOptionCard from "../../components/SettingOptionCard";
 import SkeletonLoadingList from "../../components/SkeletonLoadingList";
 import SafeAreaView from "react-native-safe-area-view";
 import Constants from "expo-constants";
+import AlertSVG from "../../assets/graphics/alert.svg";
 
 export default class Profile extends React.PureComponent {
   constructor(props) {
@@ -24,6 +25,16 @@ export default class Profile extends React.PureComponent {
       svgImage: null,
       cancelable: false,
       onConfirm: () => NavigationService.navigate("Auth"),
+    });
+  }
+
+  OnMenuClick(title) {
+    NavigationService.ShowAlert({
+      message: `You clicked ${title}!`,
+      confirmButtonText: "Okay",
+      showDeclineButton: false,
+      svgImage: AlertSVG,
+      cancelable: true,
     });
   }
 
@@ -71,13 +82,13 @@ export default class Profile extends React.PureComponent {
               </View>
               <View style={styles.Section}>
                 <SettingOptionCard
-                  onPress={() => {}}
+                  onPress={() => this.OnMenuClick("Profile")}
                   ImageUrl={"https://i.imgur.com/LSBUyhe.png"}
                   Title={GetCurrentUser().displayName}
                   Subtitle="Update profile"
                 />
                 <SettingOptionCard
-                  onPress={() => {}}
+                  onPress={() => this.OnMenuClick("Saved")}
                   IconName="bookmark-outline"
                   Title={"Saved"}
                   Subtitle="All saved items"
@@ -85,33 +96,33 @@ export default class Profile extends React.PureComponent {
               </View>
               <View style={styles.Section}>
                 <SettingOptionCard
-                  onPress={() => {}}
+                  onPress={() => this.OnMenuClick("Payment Methods")}
                   IconName="credit-card-outline"
                   Title={"Payment Methods"}
                   Subtitle="Manage payment methods"
                 />
                 <SettingOptionCard
-                  onPress={() => {}}
+                  onPress={() => this.OnMenuClick("Password")}
                   IconName="lock-outline"
                   Title={"Password"}
                   Subtitle="Change password"
                 />
                 <SettingOptionCard
-                  onPress={() => {}}
+                  onPress={() => this.OnMenuClick("Archived")}
                   IconName="file-outline"
-                  Title={"Identification Proof"}
-                  Subtitle="Add proof for a quicker check-in"
+                  Title={"Archived"}
+                  Subtitle="Check all your archived items"
                 />
               </View>
               <View style={styles.Section}>
                 <SettingOptionCard
-                  onPress={() => {}}
+                  onPress={() => this.OnMenuClick("Feedback")}
                   IconName="archive-outline"
                   Title={"Feedback"}
                   Subtitle="Tell us what we can do better"
                 />
                 <SettingOptionCard
-                  onPress={() => {}}
+                  onPress={() => this.OnMenuClick("All Policies")}
                   IconName="info-outline"
                   Title={"All Policies"}
                   Subtitle="Spaceship Privacy Policy & Terms and Conditions"
@@ -166,8 +177,8 @@ const styles = StyleSheet.create({
   LogoutText: {
     textAlign: "center",
     fontFamily: "roboto-regular",
-    fontSize: wp(5),
-    color: "#F77A79",
+    fontSize: wp(4),
+    color: "#32C5FF",
     paddingVertical: hp(3),
     letterSpacing: 0.5,
   },

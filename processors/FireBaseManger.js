@@ -15,27 +15,6 @@ const firebaseConfig = {
 
 export function SetUp() {
   !firebase.apps.length ? firebase.initializeApp(firebaseConfig) : firebase.app();
-
-  firebase.auth().onAuthStateChanged(async user => {});
-}
-
-export async function GetCompleteUserData(force_get = false) {
-  const current_user = GetCurrentUser();
-  if (current_user != null) {
-    if (user_data != null && !force_get) return user_data;
-    const uid = current_user.uid;
-    const DB = GetDB();
-    var query = DB.collection("users_public").doc(uid);
-    const user_public_doc = await query.get();
-    if (user_public_doc.exists) {
-      query = DB.collection("users_private").doc(uid);
-      const user_private_doc = await query.get();
-      const user_doc = { ...user_public_doc.data(), ...user_private_doc.data() };
-      user_data = user_doc;
-      return user_doc;
-    }
-  }
-  return null;
 }
 
 export async function Signout() {
@@ -48,6 +27,10 @@ export function GetCurrentUser() {
 
 export function GetDB() {
   return firebase.firestore();
+}
+
+export function GetAuth() {
+  return firebase.auth();
 }
 
 export function GetFunctions() {

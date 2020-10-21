@@ -104,7 +104,7 @@ export default class GenericConfirmationModal extends React.PureComponent {
                 onPress={() => {
                   this.onButtonClick("confirm");
                 }}
-                status={"success"}
+                status={"primary"}
                 style={styles.SuccessButton}
                 textStyle={styles.SuccessButtonText}
                 appearance="filled">

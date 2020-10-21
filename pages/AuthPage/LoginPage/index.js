@@ -148,7 +148,7 @@ const styles = StyleSheet.create({
     fontFamily: "roboto-bold",
     fontSize: wp(10),
     paddingBottom: hp(3),
-    color: "#f34e5c",
+    color: "#32C5FF",
   },
   SectionWrapper: {
     paddingHorizontal: wp(5),

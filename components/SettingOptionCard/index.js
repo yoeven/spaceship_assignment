@@ -37,7 +37,7 @@ export default class SettingOptionCard extends React.PureComponent {
               </Text>
             </View>
           </View>
-          <Icon name={"chevron-right-outline"} width={wp(10)} height={wp(10)} fill={"#F77A79"} />
+          <Icon name={"chevron-right-outline"} width={wp(10)} height={wp(10)} fill={"grey"} />
         </View>
       </TouchableWithoutFeedback>
     );
@@ -73,7 +73,7 @@ const styles = StyleSheet.create({
     letterSpacing: 0.3,
   },
   IconWrapper: {
-    backgroundColor: "#F77A79",
+    backgroundColor: "#32C5FF",
     borderRadius: 360,
     paddingHorizontal: wp(2.5),
     paddingVertical: wp(2.5),
