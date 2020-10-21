@@ -6,16 +6,6 @@ import MailSvg from "../../../assets/graphics/mail.svg";
 import SafeAreaView from "react-native-safe-area-view";
 
 export default class EmailVerificationPage extends React.PureComponent {
-  state = {
-    ShowLogin: false,
-  };
-
-  componentDidMount() {
-    setTimeout(() => {
-      this.setState({ ShowLogin: true });
-    }, 5 * 1000);
-  }
-
   render() {
     const Email = this.props.navigation.getParam("Email");
     return (

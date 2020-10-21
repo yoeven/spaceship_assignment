@@ -23,16 +23,14 @@ export default class NoNetPage extends React.PureComponent {
 
   render() {
     return (
-      <>
-        <View style={styles.Wrapper}>
-          <View style={styles.TitleWrapper}>
-            <Text style={styles.Title}>There seems to be an issue with your internet.</Text>
-          </View>
-          <View style={styles.GraphicWrapper}>
-            <NetLostPic width={"100%"} height={hp(50)} />
-          </View>
+      <View style={styles.Wrapper}>
+        <View style={styles.TitleWrapper}>
+          <Text style={styles.Title}>There seems to be an issue with your internet.</Text>
         </View>
-      </>
+        <View style={styles.GraphicWrapper}>
+          <NetLostPic width={"100%"} height={hp(50)} />
+        </View>
+      </View>
     );
   }
 }

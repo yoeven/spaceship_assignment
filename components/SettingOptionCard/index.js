@@ -12,11 +12,6 @@ export default class SettingOptionCard extends React.PureComponent {
     ImageUrl: null,
   };
 
-  constructor(props) {
-    super();
-    this.state = {};
-  }
-
   render() {
     return (
       <TouchableWithoutFeedback onPress={() => this.props.onPress()}>

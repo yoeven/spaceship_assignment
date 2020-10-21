@@ -5,17 +5,11 @@ import FlatListScrollView from "../../components/FlatListScrollView";
 import NavigationService from "../../NavigationService";
 import { Signout, GetCurrentUser } from "../../processors/FireBaseManger";
 import SettingOptionCard from "../../components/SettingOptionCard";
-import SkeletonLoadingList from "../../components/SkeletonLoadingList";
 import SafeAreaView from "react-native-safe-area-view";
 import Constants from "expo-constants";
 import AlertSVG from "../../assets/graphics/alert.svg";
 
 export default class Profile extends React.PureComponent {
-  constructor(props) {
-    super();
-    this.state = {};
-  }
-
   async Signout() {
     await Signout();
     NavigationService.ShowAlert({
@@ -46,99 +40,95 @@ export default class Profile extends React.PureComponent {
             <Text style={styles.PageTitle}>Profile</Text>
           </View>
 
-          {!this.state.Loading ? (
-            <View style={styles.InnerWrapper}>
-              <View style={{ flexDirection: "row", justifyContent: "center" }}>
-                <View
+          <View style={styles.InnerWrapper}>
+            <View style={{ flexDirection: "row", justifyContent: "center" }}>
+              <View
+                style={{
+                  marginBottom: hp(1),
+                  paddingHorizontal: wp(3),
+                  paddingVertical: hp(1),
+                  borderRadius: 3,
+                  flexDirection: "row",
+                  alignItems: "center",
+                }}>
+                <Text
                   style={{
-                    marginBottom: hp(1),
-                    paddingHorizontal: wp(3),
-                    paddingVertical: hp(1),
-                    borderRadius: 3,
-                    flexDirection: "row",
-                    alignItems: "center",
+                    fontFamily: "roboto-regular",
+                    fontWeight: "bold",
+                    fontSize: wp(7),
+                    color: "#00E096",
+                    paddingLeft: wp(2),
+                    textAlign: "center",
+                    letterSpacing: 0.3,
+                    lineHeight: wp(7),
                   }}>
+                  {`$${30}\n`}
                   <Text
                     style={{
-                      fontFamily: "roboto-regular",
-                      fontWeight: "bold",
-                      fontSize: wp(7),
-                      color: "#00E096",
-                      paddingLeft: wp(2),
-                      textAlign: "center",
-                      letterSpacing: 0.3,
-                      lineHeight: wp(7),
+                      fontSize: wp(4),
+                      fontWeight: "normal",
                     }}>
-                    {`$${30}\n`}
-                    <Text
-                      style={{
-                        fontSize: wp(4),
-                        fontWeight: "normal",
-                      }}>
-                      {"Available Credits"}
-                    </Text>
+                    {"Available Credits"}
                   </Text>
-                </View>
-              </View>
-              <View style={styles.Section}>
-                <SettingOptionCard
-                  onPress={() => this.OnMenuClick("Profile")}
-                  ImageUrl={"https://i.imgur.com/LSBUyhe.png"}
-                  Title={GetCurrentUser().displayName}
-                  Subtitle="Update profile"
-                />
-                <SettingOptionCard
-                  onPress={() => this.OnMenuClick("Saved")}
-                  IconName="bookmark-outline"
-                  Title={"Saved"}
-                  Subtitle="All saved items"
-                />
-              </View>
-              <View style={styles.Section}>
-                <SettingOptionCard
-                  onPress={() => this.OnMenuClick("Payment Methods")}
-                  IconName="credit-card-outline"
-                  Title={"Payment Methods"}
-                  Subtitle="Manage payment methods"
-                />
-                <SettingOptionCard
-                  onPress={() => this.OnMenuClick("Password")}
-                  IconName="lock-outline"
-                  Title={"Password"}
-                  Subtitle="Change password"
-                />
-                <SettingOptionCard
-                  onPress={() => this.OnMenuClick("Archived")}
-                  IconName="file-outline"
-                  Title={"Archived"}
-                  Subtitle="Check all your archived items"
-                />
-              </View>
-              <View style={styles.Section}>
-                <SettingOptionCard
-                  onPress={() => this.OnMenuClick("Feedback")}
-                  IconName="archive-outline"
-                  Title={"Feedback"}
-                  Subtitle="Tell us what we can do better"
-                />
-                <SettingOptionCard
-                  onPress={() => this.OnMenuClick("All Policies")}
-                  IconName="info-outline"
-                  Title={"All Policies"}
-                  Subtitle="Spaceship Privacy Policy & Terms and Conditions"
-                />
+                </Text>
               </View>
             </View>
-          ) : (
-            <SkeletonLoadingList isLoading={true} />
-          )}
+            <View style={styles.Section}>
+              <SettingOptionCard
+                onPress={() => this.OnMenuClick("Profile")}
+                ImageUrl={"https://i.imgur.com/LSBUyhe.png"}
+                Title={GetCurrentUser().displayName}
+                Subtitle="Update profile"
+              />
+              <SettingOptionCard
+                onPress={() => this.OnMenuClick("Saved")}
+                IconName="bookmark-outline"
+                Title={"Saved"}
+                Subtitle="All saved items"
+              />
+            </View>
+            <View style={styles.Section}>
+              <SettingOptionCard
+                onPress={() => this.OnMenuClick("Payment Methods")}
+                IconName="credit-card-outline"
+                Title={"Payment Methods"}
+                Subtitle="Manage payment methods"
+              />
+              <SettingOptionCard
+                onPress={() => this.OnMenuClick("Password")}
+                IconName="lock-outline"
+                Title={"Password"}
+                Subtitle="Change password"
+              />
+              <SettingOptionCard
+                onPress={() => this.OnMenuClick("Archived")}
+                IconName="file-outline"
+                Title={"Archived"}
+                Subtitle="Check all your archived items"
+              />
+            </View>
+            <View style={styles.Section}>
+              <SettingOptionCard
+                onPress={() => this.OnMenuClick("Feedback")}
+                IconName="archive-outline"
+                Title={"Feedback"}
+                Subtitle="Tell us what we can do better"
+              />
+              <SettingOptionCard
+                onPress={() => this.OnMenuClick("All Policies")}
+                IconName="info-outline"
+                Title={"All Policies"}
+                Subtitle="Spaceship Privacy Policy & Terms and Conditions"
+              />
+            </View>
+          </View>
 
           <TouchableWithoutFeedback onPress={() => this.Signout()}>
             <View>
               <Text style={styles.LogoutText}>Log out</Text>
             </View>
           </TouchableWithoutFeedback>
-          <Text style={styles.VersionStyle}>v{Constants.manifest.version}</Text>
+          <Text style={styles.VersionText}>v{Constants.manifest.version}</Text>
         </FlatListScrollView>
       </SafeAreaView>
     );
@@ -182,7 +172,7 @@ const styles = StyleSheet.create({
     paddingVertical: hp(3),
     letterSpacing: 0.5,
   },
-  VersionStyle: {
+  VersionText: {
     textAlign: "center",
     paddingTop: hp(2),
     paddingBottom: hp(1),

@@ -1,6 +1,5 @@
 import React from "react";
 import * as firebase from "firebase/app";
-import { GetDB, GetFunctions } from "../../../processors/FireBaseManger";
 import { Formik } from "formik";
 import * as Yup from "yup";
 import { StyleSheet, Text, View, Alert } from "react-native";
@@ -11,6 +10,7 @@ import PageHeader from "../../../components/PageHeader";
 import LoadingButton from "../../../components/LoadingButton";
 import SafeAreaView from "react-native-safe-area-view";
 import dayjs from "dayjs";
+
 const Filter = require("bad-words"),
   filter = new Filter();
 

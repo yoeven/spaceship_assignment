@@ -5,7 +5,7 @@ import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view
 import * as Yup from "yup";
 import { StyleSheet, Text, View, Alert } from "react-native";
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from "react-native-responsive-screen";
-import { Input, Card } from "@ui-kitten/components";
+import { Input } from "@ui-kitten/components";
 import PageHeader from "../../../components/PageHeader";
 import LoadingButton from "../../../components/LoadingButton";
 import SafeAreaView from "react-native-safe-area-view";
