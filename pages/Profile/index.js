@@ -8,8 +8,14 @@ import SettingOptionCard from "../../components/SettingOptionCard";
 import SafeAreaView from "react-native-safe-area-view";
 import Constants from "expo-constants";
 import AlertSVG from "../../assets/graphics/alert.svg";
+import * as ImagePicker from "expo-image-picker";
 
 export default class Profile extends React.PureComponent {
+  state = {
+    ProfilePicURI: "https://i.imgur.com/LSBUyhe.png",
+  };
+
+  //Firebase sign out and show sign out alert
   async Signout() {
     await Signout();
     NavigationService.ShowAlert({
@@ -22,6 +28,7 @@ export default class Profile extends React.PureComponent {
     });
   }
 
+  //show alert for each menu item click
   OnMenuClick(title) {
     NavigationService.ShowAlert({
       message: `You clicked ${title}!`,
@@ -32,6 +39,40 @@ export default class Profile extends React.PureComponent {
     });
   }
 
+  async UpdateProfilePicture() {
+    try {
+      //request user permission
+      const permissionCameraRollResult = await ImagePicker.requestCameraRollPermissionsAsync();
+
+      if (permissionCameraRollResult.granted === false) {
+        return;
+      }
+
+      //open image picker modal & get result
+      const pickerResult = await ImagePicker.launchImageLibraryAsync({
+        allowsEditing: true,
+        allowsMultipleSelection: false,
+      });
+
+      if (!pickerResult.cancelled) {
+        this.setState({ ProfilePicURI: pickerResult.uri });
+      }
+    } catch (error) {
+      console.error(error);
+      Alert.alert(
+        "Error",
+        error.message,
+        [
+          {
+            text: "OK",
+            style: "cancel",
+          },
+        ],
+        { cancelable: false }
+      );
+    }
+  }
+
   render() {
     return (
       <SafeAreaView style={{ flex: 1 }}>
@@ -39,7 +80,6 @@ export default class Profile extends React.PureComponent {
           <View style={styles.HeaderWrapper}>
             <Text style={styles.PageTitle}>Profile</Text>
           </View>
-
           <View style={styles.InnerWrapper}>
             <View style={{ flexDirection: "row", justifyContent: "center" }}>
               <View
@@ -75,8 +115,8 @@ export default class Profile extends React.PureComponent {
             </View>
             <View style={styles.Section}>
               <SettingOptionCard
-                onPress={() => this.OnMenuClick("Profile")}
-                ImageUrl={"https://i.imgur.com/LSBUyhe.png"}
+                onPress={() => this.UpdateProfilePicture()}
+                ImageUrl={this.state.ProfilePicURI}
                 Title={GetCurrentUser().displayName}
                 Subtitle="Update profile"
               />

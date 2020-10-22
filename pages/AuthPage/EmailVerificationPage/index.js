@@ -19,6 +19,7 @@ export default class EmailVerificationPage extends React.PureComponent {
           <Button
             appearance="outline"
             style={styles.TopButton}
+            //extract email domain base from user email
             onPress={() => Linking.openURL("https://www." + Email.split("@")[1])}>
             Open Email
           </Button>

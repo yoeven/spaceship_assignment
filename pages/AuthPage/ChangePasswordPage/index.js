@@ -40,9 +40,11 @@ export default class ChangePasswordPage extends React.PureComponent {
     let email = GetCurrentUser().email;
 
     try {
+      //resign in user as part of firebase policy to change password
       const user = await firebase.auth().signInWithEmailAndPassword(email, values.oldPassword);
 
       if (user != null) {
+        //update to new password
         await user.user.updatePassword(values.password);
 
         Alert.alert(

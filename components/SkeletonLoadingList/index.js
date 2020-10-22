@@ -3,6 +3,7 @@ import { StyleSheet, View, FlatList } from "react-native";
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from "react-native-responsive-screen";
 import { Code } from "react-content-loader/native";
 
+//SVG skeleton loading placeholder
 export default class SkeletonLoadingList extends React.PureComponent {
   static defaultProps = {
     isLoading: false,

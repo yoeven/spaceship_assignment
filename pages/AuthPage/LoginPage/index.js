@@ -32,13 +32,16 @@ export default class LoginPage extends React.PureComponent {
 
   async Login(values, setSubmitting) {
     try {
+      //setPersistence to store auth token locally, to prevent relogin
       await firebase.auth().setPersistence(firebase.auth.Auth.Persistence.LOCAL);
       const user = await firebase.auth().signInWithEmailAndPassword(values.email, values.password);
 
+      //check if user email is validated and direct time to the home page after login auth
       if (user != null) {
         if (user.user.emailVerified) {
           this.props.navigation.navigate("App");
         } else {
+          //if user exist but not email validated, send validation email
           await user.user.sendEmailVerification();
           await firebase.auth().signOut();
           setSubmitting(false);
@@ -50,6 +53,9 @@ export default class LoginPage extends React.PureComponent {
       const user = firebase.auth().currentUser;
       await firebase.auth().signOut();
       setSubmitting(false);
+
+      //Special case:
+      //Sending multiple varification emails in a row throws an error, caugth error and directs user to email verification sent page
       if (error.message == "We have blocked all requests from this device due to unusual activity. Try again later.") {
         const email = user ? user.email : null;
         this.props.navigation.navigate("EmailVerificationPage", { Email: email });

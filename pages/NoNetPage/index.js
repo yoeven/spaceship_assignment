@@ -6,10 +6,10 @@ import NetLostPic from "../../assets/graphics/netlost.svg";
 
 export default class NoNetPage extends React.PureComponent {
   componentDidMount() {
+    //removes hardware backpress for android and status bar
     this.willFocusSubscription = this.props.navigation.addListener("willFocus", () => {
       StatusBar.setHidden(true);
     });
-
     this.hardwareBackPress = BackHandler.addEventListener("hardwareBackPress", () => {
       return true;
     });

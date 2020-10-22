@@ -1,8 +1,10 @@
 import React from "react";
-import { View, StyleSheet, Text, TouchableWithoutFeedback,Platform } from "react-native";
+import { View, StyleSheet, Text, TouchableWithoutFeedback, Platform } from "react-native";
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from "react-native-responsive-screen";
 import { Icon } from "@ui-kitten/components";
 import NavigationService from "../../NavigationService";
+
+//page header with full control on icons, defaults to back on top left
 
 export default class PageHeader extends React.PureComponent {
   static defaultProps = {
@@ -46,7 +48,7 @@ const styles = StyleSheet.create({
   Wrapper: {
     width: "100%",
     paddingHorizontal: wp(1),
-    paddingTop: Platform.OS=="android"?hp(1):0,
+    paddingTop: Platform.OS == "android" ? hp(1) : 0,
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "space-between",

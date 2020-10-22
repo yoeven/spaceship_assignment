@@ -68,10 +68,12 @@ export default class RegisterPage extends React.PureComponent {
     try {
       user = await firebase.auth().createUserWithEmailAndPassword(values.email, values.password);
 
+      //store displayname after user registration
       await user.user.updateProfile({
         displayName: values.username,
       });
 
+      //send user to email verification page after creating account
       if (user) {
         if (user.user.emailVerified) {
           this.props.navigation.navigate("App");
@@ -82,11 +84,13 @@ export default class RegisterPage extends React.PureComponent {
         }
       }
     } catch (error) {
+      //for any error, delete account for user to reregister
       if (user != null) {
-        user.user.delete();
+        await user.user.delete();
       }
       console.error(error);
       setSubmitting(false);
+
       Alert.alert(
         "Error",
         error.message,

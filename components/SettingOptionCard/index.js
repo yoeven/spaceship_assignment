@@ -3,6 +3,7 @@ import { View, Text, StyleSheet, TouchableWithoutFeedback, Image } from "react-n
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from "react-native-responsive-screen";
 import { Icon } from "@ui-kitten/components";
 
+//setting menu card view
 export default class SettingOptionCard extends React.PureComponent {
   static defaultProps = {
     Title: "title",

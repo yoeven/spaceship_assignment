@@ -4,6 +4,8 @@ import { widthPercentageToDP as wp, heightPercentageToDP as hp } from "react-nat
 import { Icon, Button } from "@ui-kitten/components";
 import Modal from "react-native-modal";
 
+//global alert modal
+
 export default class GenericConfirmationModal extends React.PureComponent {
   static defaultProps = {};
 
@@ -17,6 +19,7 @@ export default class GenericConfirmationModal extends React.PureComponent {
   }
 
   Show(ModalData) {
+    //default config for prop data
     let defaultData = {
       message: "Alert",
       confirmButtonText: "Confirm",
@@ -38,6 +41,7 @@ export default class GenericConfirmationModal extends React.PureComponent {
     this.setState({ isModalVisible: false });
   }
 
+  //based on the deision made of the user, the modal will react accordingly and call the callback function
   onButtonClick(decision) {
     const ModalData = this.state.ModalData;
 

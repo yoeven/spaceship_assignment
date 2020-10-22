@@ -2,6 +2,7 @@ import React from "react";
 import { View, Text, StyleSheet } from "react-native";
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from "react-native-responsive-screen";
 
+//text view for user credit
 export default class ProfileCreditsView extends React.PureComponent {
   render() {
     return (
