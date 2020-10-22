@@ -10,9 +10,10 @@ Run the following commands in sequence to start node application
 3. Install expo by running `npm install --global expo-cli`
 4. Clone the project and navigate to the root using your terminal
 5. Run `yarn or npm install` to install dependencies
-6.  Running `yarn start` will start the react-native and expo instance locally
-7. Run either a android or ios emulator
-8. Using the web interface either click run on android or run on ios
+6. Create `.env` file and add required private keys or add provided `.env` file in root of project
+7.  Running `yarn start` will start the react-native and expo instance locally
+8. Run either a android or ios emulator
+9. Using the web interface either click run on android or run on ios
 
 ## Folder Stucture
 
@@ -32,6 +33,6 @@ Run the following commands in sequence to start node application
 4. Either follow [this](https://github.com/firstcontributions/first-contributions) or [this](https://github.com/freeCodeCamp/how-to-contribute-to-open-source) for better contributions
 
 
-Current User flow chart:
+Current user flow chart:
 
 ![enter image description here](https://i.imgur.com/2EwKrHR.png)
